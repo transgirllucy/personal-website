@@ -3,9 +3,8 @@ import "./globals.css"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "My Personal Site",
+  title: "Lucy's Website",
   description: "Personal website about a 19 yr old transgirl doing Linux stuff",
-    generator: 'v0.dev'
 }
 
 export default function RootLayout({

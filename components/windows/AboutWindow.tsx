@@ -40,7 +40,7 @@ export const AboutWindow: React.FC<AboutWindowProps> = ({
           Hello World! <span className="pride-colors">🏳️‍⚧️</span>
         </h3>
         <p>
-          I'm a 19-year-old <span className="pride-colors">transgender girl</span> currently living in Dresden, Germany,
+          I'm a 19-year-old <span className="pride-colors">transgirl</span> currently living in Dresden, Germany,
           and hanging out at c3d2 (Chaos Computer Club Dresden).
         </p>
         <div className="field-row">
