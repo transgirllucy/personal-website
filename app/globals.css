@@ -1,0 +1,1016 @@
+:root {
+  --background: #008080;
+  --foreground: #000000;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  margin: 0;
+  padding: 0;
+  font-family: "MS Sans Serif", sans-serif;
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+}
+
+.container {
+  max-width: 800px;
+  width: 100%;
+}
+
+.window {
+  margin-bottom: 16px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+  resize: both;
+  overflow: auto;
+}
+
+.window-body {
+  padding: 8px;
+}
+
+.desktop-icon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 16px;
+  width: 75px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.icon-container {
+  width: 32px;
+  height: 32px;
+  margin-bottom: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.desktop-icon-text {
+  color: white;
+  text-shadow: 1px 1px 1px black;
+}
+
+.desktop-icons {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.taskbar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #c0c0c0;
+  display: flex;
+  align-items: center;
+  padding: 2px;
+  border-top: 1px solid white;
+  box-shadow: 0 -1px 0 #808080;
+  z-index: 1000;
+}
+
+.start-button {
+  display: flex;
+  align-items: center;
+  margin-right: 8px;
+  padding: 2px 4px;
+}
+
+.start-button.active {
+  border: 1px solid #808080;
+  border-top-color: #808080;
+  border-left-color: #808080;
+  border-bottom-color: white;
+  border-right-color: white;
+  background-color: #d3d3d3;
+}
+
+.start-logo {
+  width: 16px;
+  height: 16px;
+  margin-right: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.taskbar-time {
+  margin-left: auto;
+  padding: 2px 8px;
+  border: 1px solid #808080;
+  border-top-color: #808080;
+  border-left-color: #808080;
+  border-bottom-color: white;
+  border-right-color: white;
+  font-size: 12px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.taskbar-time:hover {
+  background-color: #d3d3d3;
+}
+
+.taskbar-date {
+  font-size: 10px;
+  margin-top: 2px;
+}
+
+.content-area {
+  padding: 16px;
+}
+
+.project-card {
+  margin-bottom: 16px;
+}
+
+.field-row {
+  margin-bottom: 8px;
+}
+
+.pronoun-badge {
+  display: inline-block;
+  background-color: #ff69b4;
+  color: white;
+  padding: 2px 6px;
+  margin-right: 6px;
+  border-radius: 3px;
+  font-size: 0.8rem;
+}
+
+.pride-colors {
+  background: linear-gradient(to right, #ff69b4, #ff69b4, #ff9bcd, white, #ff9bcd, #ff69b4, #ff69b4);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-weight: bold;
+}
+
+.taskbar-button {
+  padding: 2px 8px;
+  margin-right: 4px;
+  border: 1px solid #808080;
+  border-top-color: white;
+  border-left-color: white;
+  border-bottom-color: #808080;
+  border-right-color: #808080;
+  background-color: #c0c0c0;
+}
+
+.taskbar-button.active {
+  border: 1px solid #808080;
+  border-top-color: #808080;
+  border-left-color: #808080;
+  border-bottom-color: white;
+  border-right-color: white;
+  background-color: #d3d3d3;
+}
+
+.title-bar {
+  user-select: none;
+}
+
+/* Start Menu Styles */
+.start-menu {
+  position: absolute;
+  bottom: 28px;
+  left: 0;
+  width: 200px;
+  background-color: #c0c0c0;
+  border: 2px solid #808080;
+  border-top-color: white;
+  border-left-color: white;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.start-menu-banner {
+  background: linear-gradient(to right, #000080, #1084d0);
+  height: 36px;
+  display: flex;
+  align-items: center;
+  padding-left: 20px;
+  padding-right: 8px;
+  margin-bottom: 2px;
+}
+
+.start-menu-banner-text {
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  transform: rotate(-90deg);
+  transform-origin: left bottom;
+  position: absolute;
+  bottom: 24px;
+  left: 18px;
+}
+
+.start-menu-items {
+  padding: 2px 2px 2px 36px;
+}
+
+.start-menu-item {
+  display: flex;
+  align-items: center;
+  padding: 4px 8px;
+  cursor: pointer;
+}
+
+.start-menu-item:hover {
+  background-color: #000080;
+  color: white;
+}
+
+.start-menu-icon {
+  margin-right: 8px;
+  width: 16px;
+  height: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.start-menu-divider {
+  height: 1px;
+  background-color: #808080;
+  margin: 4px 0;
+  border-bottom: 1px solid white;
+}
+
+/* Task Manager Styles */
+.task-manager-tabs {
+  display: flex;
+  border-bottom: 1px solid #808080;
+  margin-bottom: 8px;
+}
+
+.task-manager-tab {
+  padding: 4px 8px;
+  margin-right: 2px;
+  border: 1px solid #808080;
+  border-top-color: white;
+  border-left-color: white;
+  border-bottom: none;
+  background-color: #c0c0c0;
+  cursor: pointer;
+}
+
+.task-manager-tab.active {
+  background-color: #d3d3d3;
+  position: relative;
+  top: 1px;
+  border-bottom: 1px solid #d3d3d3;
+}
+
+.task-manager-content {
+  padding: 8px;
+}
+
+.task-list {
+  border: 1px inset #808080;
+  background-color: white;
+  margin-bottom: 8px;
+  height: 200px;
+  overflow-y: auto;
+}
+
+.task-list-header {
+  display: flex;
+  background-color: #c0c0c0;
+  border-bottom: 1px solid #808080;
+  font-weight: bold;
+  padding: 4px;
+}
+
+.task-item {
+  display: flex;
+  padding: 4px;
+  border-bottom: 1px solid #e0e0e0;
+  align-items: center;
+}
+
+.task-column {
+  padding: 0 4px;
+}
+
+.task-name {
+  flex: 1;
+}
+
+.task-status {
+  width: 80px;
+}
+
+.process-name {
+  flex: 1;
+}
+
+.process-pid {
+  width: 60px;
+  text-align: right;
+}
+
+.process-cpu {
+  width: 60px;
+  text-align: right;
+}
+
+.process-mem {
+  width: 80px;
+  text-align: right;
+}
+
+.task-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 4px;
+}
+
+.task-button {
+  min-width: 80px;
+}
+
+.task-end-button {
+  margin-left: 8px;
+}
+
+.task-empty {
+  padding: 8px;
+  color: #808080;
+  font-style: italic;
+  text-align: center;
+}
+
+/* Performance Tab */
+.performance-graphs {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.performance-section {
+  display: flex;
+  flex-direction: column;
+}
+
+.performance-header {
+  margin-bottom: 4px;
+  font-weight: bold;
+}
+
+.performance-graph {
+  height: 100px;
+  border: 1px inset #808080;
+  background-color: #000000;
+  position: relative;
+  overflow: hidden;
+}
+
+.graph-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.graph-bar {
+  position: absolute;
+  bottom: 0;
+  background-color: #00ff00;
+  width: 2px;
+}
+
+.memory-bar {
+  background-color: #0000ff;
+}
+
+.performance-stats {
+  border: 1px inset #808080;
+  background-color: white;
+  padding: 8px;
+}
+
+.stats-row {
+  display: flex;
+  margin-bottom: 4px;
+}
+
+.stats-label {
+  flex: 1;
+}
+
+.stats-value {
+  font-weight: bold;
+}
+
+/* Taskbar Context Menu */
+.taskbar-context-menu {
+  position: absolute;
+  background-color: #c0c0c0;
+  border: 2px solid #808080;
+  border-top-color: white;
+  border-left-color: white;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+  min-width: 180px;
+}
+
+.context-menu-item {
+  padding: 4px 8px;
+  cursor: pointer;
+}
+
+.context-menu-item:hover {
+  background-color: #000080;
+  color: white;
+}
+
+.context-menu-divider {
+  height: 1px;
+  background-color: #808080;
+  margin: 2px 0;
+  border-bottom: 1px solid white;
+}
+
+/* Add these styles for the calendar */
+.calendar-popup {
+  position: absolute;
+  bottom: 30px;
+  right: 0;
+  width: 220px;
+  background-color: #c0c0c0;
+  border: 2px solid #808080;
+  border-top-color: white;
+  border-left-color: white;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.calendar-body {
+  padding: 8px;
+}
+
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.calendar-title {
+  font-weight: bold;
+  text-align: center;
+}
+
+.calendar-nav-button {
+  min-width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.calendar-days-header {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  margin-bottom: 4px;
+  text-align: center;
+}
+
+.calendar-day-name {
+  font-size: 12px;
+  font-weight: bold;
+  padding: 2px;
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 1px;
+}
+
+.calendar-day {
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  border: 1px solid transparent;
+  cursor: default;
+}
+
+.calendar-day:hover:not(.empty) {
+  border: 1px solid #000080;
+  background-color: #efefef;
+}
+
+.calendar-day.today {
+  border: 1px solid #ff0000;
+  font-weight: bold;
+}
+
+.calendar-day.empty {
+  background-color: #d3d3d3;
+}
+
+/* Add animation styles */
+.minimize-animation {
+  pointer-events: none;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Make sure windows have proper z-index when active */
+.window.active {
+  z-index: 10;
+}
+
+/* Snake Game Styles */
+.snake-game-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  padding: 10px;
+  background-color: #000000;
+}
+
+.snake-canvas {
+  border: 2px solid #00ff00;
+  background-color: #000000;
+}
+
+.snake-start-screen,
+.snake-game-over {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  color: #00ff00;
+  background-color: #000000;
+  padding: 20px;
+  text-align: center;
+}
+
+.snake-start-screen h3,
+.snake-game-over h3 {
+  color: #00ff00;
+  margin-bottom: 20px;
+}
+
+.snake-start-screen p,
+.snake-game-over p {
+  margin-bottom: 15px;
+  color: #00ff00;
+}
+
+.snake-start-screen button,
+.snake-game-over button {
+  background-color: #c0c0c0;
+  border: 2px outset #c0c0c0;
+  padding: 5px 15px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.snake-start-screen button:hover,
+.snake-game-over button:hover {
+  background-color: #d3d3d3;
+}
+
+/* Notepad Styles */
+.notepad-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 0;
+}
+
+.notepad-menu-bar {
+  display: flex;
+  background-color: #c0c0c0;
+  border-bottom: 1px solid #808080;
+  position: relative;
+}
+
+.notepad-menu-item {
+  padding: 2px 8px;
+  cursor: pointer;
+}
+
+.notepad-menu-item:hover {
+  background-color: #000080;
+  color: white;
+}
+
+.notepad-dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #c0c0c0;
+  border: 2px solid #808080;
+  border-top-color: white;
+  border-left-color: white;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+  min-width: 150px;
+  z-index: 1000;
+}
+
+.file-menu {
+  left: 0;
+}
+
+.edit-menu {
+  left: 30px;
+}
+
+.help-menu {
+  left: 60px;
+}
+
+.notepad-menu-option {
+  padding: 4px 20px;
+  cursor: pointer;
+}
+
+.notepad-menu-option:hover:not(.disabled) {
+  background-color: #000080;
+  color: white;
+}
+
+.notepad-menu-option.disabled {
+  color: #808080;
+  cursor: default;
+}
+
+.notepad-menu-divider {
+  height: 1px;
+  background-color: #808080;
+  margin: 2px 0;
+  border-bottom: 1px solid white;
+}
+
+.notepad-textarea {
+  flex: 1;
+  resize: none;
+  border: 1px inset #808080;
+  padding: 2px;
+  font-family: "Courier New", monospace;
+  font-size: 12px;
+  line-height: 1.2;
+  white-space: pre;
+  overflow: auto;
+  margin: 0;
+}
+
+.notepad-textarea:focus {
+  outline: none;
+}
+
+/* Wallpaper Styles */
+.desktop-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background-color: var(--background);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* Add these styles to make the Display Properties window more responsive */
+
+.display-properties-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+}
+
+.display-properties-content {
+  flex: 1;
+  padding: 8px;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.wallpaper-preview-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.wallpaper-preview {
+  width: 80%;
+  max-width: 200px;
+  height: 0;
+  padding-bottom: 60%;
+  border: 2px inset #808080;
+  margin: 0 auto 10px auto;
+  background-color: #008080;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.wallpaper-options {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex: 1;
+}
+
+.wallpaper-list {
+  border: 1px inset #808080;
+  height: 120px;
+  min-height: 80px;
+  overflow-y: auto;
+  margin-bottom: 10px;
+  background-color: white;
+  flex: 1;
+}
+
+.wallpaper-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.wallpaper-display-options {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  gap: 5px;
+}
+
+.wallpaper-url-input {
+  width: 100%;
+  margin-bottom: 10px;
+  box-sizing: border-box;
+}
+
+.file-upload-container {
+  margin: 10px 0;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.file-upload-container input[type="file"] {
+  width: 100%;
+}
+
+.wallpaper-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 5px;
+  margin-top: auto;
+  padding-top: 10px;
+}
+
+@media (max-width: 400px) {
+  .wallpaper-buttons {
+    flex-direction: column;
+  }
+
+  .wallpaper-display-options {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Add the music player styles to the existing CSS */
+.music-player-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 0;
+  background-color: #c0c0c0;
+  overflow: hidden;
+}
+
+.music-player-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 8px;
+  overflow: auto;
+}
+
+.music-player-info {
+  text-align: center;
+  margin-bottom: 10px;
+  padding: 8px;
+  background-color: #fff;
+  border: 1px inset #808080;
+  min-height: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.music-player-title {
+  font-weight: bold;
+  margin-bottom: 4px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.music-player-url {
+  font-size: 12px;
+  color: #666;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.music-player-controls {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.music-player-progress-container {
+  position: relative;
+  height: 20px;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.music-player-progress {
+  width: 100%;
+  height: 18px;
+  border: 1px inset #808080;
+  background-color: white;
+  position: relative;
+}
+
+.music-player-progress-bar {
+  height: 100%;
+  background-color: #000080;
+  width: 0;
+}
+
+.music-player-time {
+  position: absolute;
+  top: 0;
+  right: 8px;
+  font-size: 12px;
+  line-height: 18px;
+  color: white;
+  mix-blend-mode: difference;
+  z-index: 1;
+}
+
+.music-player-volume-container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.music-player-volume-label {
+  min-width: 60px;
+}
+
+.music-player-volume {
+  flex: 1;
+}
+
+.music-player-add-container {
+  margin-top: 10px;
+}
+
+.music-player-add-url {
+  width: 100%;
+  margin-bottom: 8px;
+  box-sizing: border-box;
+}
+
+.music-player-add-buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.music-player-playlist {
+  flex: 1;
+  margin-top: 10px;
+  border: 1px inset #808080;
+  background-color: white;
+  overflow-y: auto;
+  min-height: 100px;
+}
+
+.music-player-playlist-item {
+  padding: 4px 8px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.music-player-playlist-item:hover {
+  background-color: #e0e0e0;
+}
+
+.music-player-playlist-item.active {
+  background-color: #000080;
+  color: white;
+}
+
+.music-player-playlist-item-title {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  flex: 1;
+}
+
+.music-player-playlist-item-remove {
+  margin-left: 8px;
+  color: inherit;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.music-player-playlist-empty {
+  padding: 8px;
+  color: #808080;
+  font-style: italic;
+  text-align: center;
+}
+
+.music-player-status {
+  padding: 2px 4px;
+  background-color: #c0c0c0;
+  border-top: 1px solid #808080;
+  font-size: 12px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.music-player-status-left {
+  text-align: left;
+}
+
+.music-player-status-right {
+  text-align: right;
+}
+
+.music-player-control-button {
+  min-width: 36px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.music-player-visualization {
+  height: 40px;
+  border: 1px inset #808080;
+  background-color: #000;
+  margin-bottom: 10px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+
+.visualizer-bar {
+  background: linear-gradient(to top, #00ff00, #00aa00);
+  width: 4px;
+  margin: 0 1px;
+  height: 5px;
+}
+
+@media (max-width: 400px) {
+  .music-player-controls {
+    flex-wrap: wrap;
+  }
+
+  .music-player-add-buttons {
+    flex-wrap: wrap;
+  }
+}
+
+/* Icon for the music player */
+.music-player-icon {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
