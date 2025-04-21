@@ -101,3 +101,20 @@ export const MusicPlayerIcon = () => (
     <path d="M5 5L8 8" stroke="#00FFFF" strokeWidth="2" />
   </svg>
 )
+
+export const CmdIcon = () => (
+  <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <rect x="2" y="2" width="28" height="28" fill="#000000" stroke="#000000" strokeWidth="1" />
+    <rect x="4" y="4" width="24" height="4" fill="#000080" />
+    <text x="6" y="7.5" fill="#FFFFFF" fontSize="3" fontFamily="Arial">
+      Command Prompt
+    </text>
+    <rect x="4" y="8" width="24" height="18" fill="#000000" />
+    <text x="6" y="14" fill="#C0C0C0" fontSize="3" fontFamily="monospace">
+      C:&gt;
+    </text>
+    <text x="6" y="18" fill="#C0C0C0" fontSize="3" fontFamily="monospace">
+      _
+    </text>
+  </svg>
+)

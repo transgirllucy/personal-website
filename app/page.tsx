@@ -21,6 +21,7 @@ import { Calendar } from "../components/Calendar"
 import { Taskbar } from "../components/Taskbar"
 import { StartMenu } from "../components/StartMenu"
 import { DesktopIcons } from "../components/DesktopIcons"
+import { CmdWindow } from "../components/windows/CmdWindow"
 
 // Windows 98 Icons as components
 const Win98Logo = () => (
@@ -203,6 +204,15 @@ export default function Home() {
       size: { width: "400px", height: "500px" },
       zIndex: 1,
       title: "Music Player",
+    },
+    cmd: {
+      isOpen: false,
+      isMinimized: false,
+      isMaximized: false,
+      position: { x: 400, y: 200 },
+      size: { width: "500px", height: "400px" },
+      zIndex: 1,
+      title: "Command Prompt",
     },
   })
 
@@ -1144,6 +1154,17 @@ export default function Home() {
           audioStatus={audioStatus}
           visualizerData={visualizerData}
           audioRef={audioRef}
+        />
+      )}
+
+      {windowStates.cmd.isOpen && (
+        <CmdWindow
+          windowState={windowStates.cmd}
+          isActive={activeWindow === "cmd"}
+          onClose={() => closeWindow("cmd")}
+          onMinimize={() => minimizeWindow("cmd")}
+          onMaximize={() => maximizeWindow("cmd")}
+          onStartDragging={(e) => startDragging(e, "cmd")}
         />
       )}
 

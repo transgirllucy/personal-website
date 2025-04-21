@@ -37,25 +37,28 @@ export const AboutWindow: React.FC<AboutWindowProps> = ({
       </div>
       <div className="window-body">
         <h3>
-          Hello World! <span className="pride-colors">🏳️‍⚧️</span>
+          Hello World! <span>🏳️‍⚧️</span>
         </h3>
         <p>
-          I'm a 19-year-old <span className="pride-colors">transgirl</span> currently living in Dresden, Germany,
-          and hanging out at c3d2 (Chaos Computer Club Dresden).
+          I'm a 19-year-old <span>transgirl 🏳️‍⚧️</span> currently living in Berlin, Germany, and you'll find me at xHain,
+          CCCB, c-base and C3D2.
         </p>
         <div className="field-row">
-          <span className="pronoun-badge">she/her</span>
-          <span className="pronoun-badge">t4t</span>
-          <span className="pronoun-badge">lesbian</span>
+          <span className="pronoun-badge">she/her 👩</span>
+          <span className="pronoun-badge">t4t 🏳️‍⚧️</span>
+          <span className="pronoun-badge">lesbian 🌈</span>
         </div>
         <p>When I'm not being gay and doing crimes (in Minecraft), I'm usually tinkering with:</p>
         <ul className="tree-view">
-          <li>NixOS configuration</li>
-          <li>Linux From Scratch builds</li>
-          <li>Gentoo optimization</li>
-          <li>Queer tech spaces</li>
+          <li>NixOS configuration 🐧</li>
+          <li>Linux From Scratch builds 🔧</li>
+          <li>Gentoo optimization ⚙️</li>
+          <li>Queer tech spaces 🌈👩‍💻</li>
         </ul>
-        <p>I believe in free and open-source software, trans rights, and the power of community-driven tech spaces.</p>
+        <p>
+          I believe in free and open-source software 🔓, trans rights ✊, and the power of community-driven tech spaces
+          👩‍💻👨‍💻.
+        </p>
       </div>
     </div>
   )

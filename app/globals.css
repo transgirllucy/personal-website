@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 :root {
   --background: #008080;
   --foreground: #000000;
@@ -140,14 +144,6 @@ body {
   margin-right: 6px;
   border-radius: 3px;
   font-size: 0.8rem;
-}
-
-.pride-colors {
-  background: linear-gradient(to right, #ff69b4, #ff69b4, #ff9bcd, white, #ff9bcd, #ff69b4, #ff69b4);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  font-weight: bold;
 }
 
 .taskbar-button {
@@ -1013,4 +1009,80 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+/* Command Prompt Styles */
+.cmd-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 0;
+  background-color: #000000;
+  color: #c0c0c0;
+  font-family: "Courier New", monospace;
+  font-size: 14px;
+}
+
+/* Add these styles to the Command Prompt section */
+
+.cmd-container {
+  position: relative;
+  cursor: text;
+}
+
+.cmd-hidden-input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+  height: 0;
+  width: 0;
+}
+
+.cmd-current-line {
+  display: flex;
+  white-space: pre;
+}
+
+.cmd-cursor {
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+.cmd-output {
+  flex: 1;
+  padding: 8px;
+  overflow-y: auto;
+  white-space: pre-wrap;
+}
+
+.cmd-line {
+  line-height: 1.2;
+}
+
+.cmd-input-container {
+  padding: 0 8px 8px 8px;
+  display: flex;
+}
+
+.cmd-input {
+  flex: 1;
+  background-color: #000000;
+  color: #c0c0c0;
+  border: none;
+  font-family: "Courier New", monospace;
+  font-size: 14px;
+  padding: 0;
+}
+
+.cmd-input:focus {
+  outline: none;
 }

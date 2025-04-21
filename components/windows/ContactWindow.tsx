@@ -39,23 +39,23 @@ export const ContactWindow: React.FC<ContactWindowProps> = ({
         <p>You can find me at:</p>
         <div className="field-row">
           <label>Location:</label>
-          <div>c3d2 (Chaos Computer Club Dresden)</div>
+          <div>📍 Berlin: xHain, CCCB, c-base & Dresden: C3D2</div>
         </div>
         <div className="field-row">
           <label>Email:</label>
-          <div>your-email@example.com</div>
+          <div>📧 your-email@example.com</div>
         </div>
         <div className="field-row">
           <label>Matrix:</label>
-          <div>@username:matrix.org</div>
+          <div>💬 @username:matrix.org</div>
         </div>
         <div className="field-row">
           <label>GitHub:</label>
-          <div>github.com/yourusername</div>
+          <div>🐙 github.com/yourusername</div>
         </div>
         <p>
-          I'm always open to collaborating on queer-friendly tech projects, especially those involving NixOS, Linux, or
-          creating safe spaces for trans folks in tech.
+          I'm always open to collaborating on queer-friendly tech projects 🌈, especially those involving NixOS 🐧,
+          Linux 💻, or creating safe spaces for trans folks in tech 🏳️‍⚧️👩‍💻.
         </p>
       </div>
     </div>

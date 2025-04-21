@@ -37,32 +37,32 @@ export const ProjectsWindow: React.FC<ProjectsWindowProps> = ({
       </div>
       <div className="window-body">
         <div className="project-card">
-          <h4>NixOS Configuration</h4>
+          <h4>NixOS Configuration 🐧</h4>
           <p>My personal NixOS setup with declarative system configuration:</p>
           <ul>
-            <li>Custom desktop environment</li>
-            <li>Reproducible development environments</li>
-            <li>Dotfiles managed through Home Manager</li>
+            <li>Custom desktop environment 🖥️</li>
+            <li>Reproducible development environments 🔄</li>
+            <li>Dotfiles managed through Home Manager 🏠</li>
           </ul>
         </div>
 
         <div className="project-card">
-          <h4>Linux From Scratch</h4>
+          <h4>Linux From Scratch 🔨</h4>
           <p>Building a complete Linux system from source code:</p>
           <ul>
-            <li>Custom kernel configuration</li>
-            <li>Minimal system with only necessary components</li>
-            <li>Documentation of the entire build process</li>
+            <li>Custom kernel configuration ⚙️</li>
+            <li>Minimal system with only necessary components 🧩</li>
+            <li>Documentation of the entire build process 📝</li>
           </ul>
         </div>
 
         <div className="project-card">
-          <h4>Gentoo Optimization</h4>
+          <h4>Gentoo Optimization ⚡</h4>
           <p>Finely-tuned Gentoo installation:</p>
           <ul>
-            <li>Custom USE flags for optimal performance</li>
-            <li>Kernel compiled with specific CPU optimizations</li>
-            <li>Minimal bloat, maximum speed</li>
+            <li>Custom USE flags for optimal performance 🚀</li>
+            <li>Kernel compiled with specific CPU optimizations 💻</li>
+            <li>Minimal bloat, maximum speed ⏱️</li>
           </ul>
         </div>
       </div>

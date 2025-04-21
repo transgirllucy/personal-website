@@ -1,7 +1,7 @@
 "use client"
 
 import type React from "react"
-import { AboutIcon, LinuxIcon, ContactIcon, SnakeIcon, NotepadIcon, MusicPlayerIcon } from "./win98-icons"
+import { AboutIcon, LinuxIcon, ContactIcon, SnakeIcon, NotepadIcon, MusicPlayerIcon, CmdIcon } from "./win98-icons"
 
 interface DesktopIconsProps {
   openWindow: (windowName: string) => void
@@ -45,6 +45,12 @@ export const DesktopIcons: React.FC<DesktopIconsProps> = ({ openWindow }) => {
           <MusicPlayerIcon />
         </div>
         <span className="desktop-icon-text">Music Player</span>
+      </div>
+      <div className="desktop-icon" onClick={() => openWindow("cmd")}>
+        <div className="icon-container">
+          <CmdIcon />
+        </div>
+        <span className="desktop-icon-text">Command Prompt</span>
       </div>
     </div>
   )
