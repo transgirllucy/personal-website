@@ -1,30 +1,14 @@
-# Personal website creation
-
-*Automatically synced with your [v0.dev](https://v0.dev) deployments*
-
-[![Deployed on Vercel](https://img.shields.io/badge/Deployed%20on-Vercel-black?style=for-the-badge&logo=vercel)](https://vercel.com/mrtuxas-projects/v0-personal-website-creation)
-[![Built with v0](https://img.shields.io/badge/Built%20with-v0.dev-black?style=for-the-badge)](https://v0.dev/chat/projects/Gg6D2cfFwko)
-
-## Overview
-
-This repository will stay in sync with your deployed chats on [v0.dev](https://v0.dev).
-Any changes you make to your deployed app will be automatically pushed to this repository from [v0.dev](https://v0.dev).
-
-## Deployment
-
-Your project is live at:
-
-**[https://vercel.com/mrtuxas-projects/v0-personal-website-creation](https://vercel.com/mrtuxas-projects/v0-personal-website-creation)**
-
-## Build your app
-
-Continue building your app on:
-
-**[https://v0.dev/chat/projects/Gg6D2cfFwko](https://v0.dev/chat/projects/Gg6D2cfFwko)**
-
-## How It Works
-
-1. Create and modify your project using [v0.dev](https://v0.dev)
-2. Deploy your chats from the v0 interface
-3. Changes are automatically pushed to this repository
-4. Vercel deploys the latest version from this repository
+------------------------------------------------------------------------------
+Language                     files          blank        comment           code
+-------------------------------------------------------------------------------
+TypeScript                      73            944            206           8617
+YAML                             1            613              0           2988
+CSS                              2            167             16           1035
+JSON                             3              0              0            118
+Nix                              1              7              0             47
+JavaScript                       2              2              2             20
+Markdown                         1             12              0             18
+SVG                              2              0              0              2
+-------------------------------------------------------------------------------
+SUM:                            85           1745            224          12845
+-------------------------------------------------------------------------------
