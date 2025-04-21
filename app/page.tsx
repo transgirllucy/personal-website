@@ -22,6 +22,8 @@ import { Taskbar } from "../components/Taskbar"
 import { StartMenu } from "../components/StartMenu"
 import { DesktopIcons } from "../components/DesktopIcons"
 import { CmdWindow } from "../components/windows/CmdWindow"
+// Add this import at the top with the other window imports
+import { FlappyBirdWindow } from "../components/windows/FlappyBirdWindow"
 
 // Windows 98 Icons as components
 const Win98Logo = () => (
@@ -213,6 +215,16 @@ export default function Home() {
       size: { width: "500px", height: "400px" },
       zIndex: 1,
       title: "Command Prompt",
+    },
+    // Add this to the windowStates object in the useState initialization
+    flappyBird: {
+      isOpen: false,
+      isMinimized: false,
+      isMaximized: false,
+      position: { x: 300, y: 150 },
+      size: { width: "350px", height: "500px" },
+      zIndex: 1,
+      title: "Flappy Bird",
     },
   })
 
@@ -1220,6 +1232,17 @@ export default function Home() {
 
       {renderMinimizeAnimation()}
       <audio ref={audioRef} />
+      {windowStates.flappyBird.isOpen && (
+        <FlappyBirdWindow
+          windowState={windowStates.flappyBird}
+          isActive={activeWindow === "flappyBird"}
+          onClose={() => closeWindow("flappyBird")}
+          onMinimize={() => minimizeWindow("flappyBird")}
+          onMaximize={() => maximizeWindow("flappyBird")}
+          onStartDragging={(e) => startDragging(e, "flappyBird")}
+          windowStates={windowStates}
+        />
+      )}
     </main>
   )
 }

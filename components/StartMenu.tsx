@@ -1,7 +1,7 @@
 "use client"
 
 import type React from "react"
-import { Computer, Terminal, Globe, Monitor, Music, Command } from "lucide-react"
+import { Computer, Terminal, Globe, Monitor, Music, Command, GamepadIcon as GameController } from "lucide-react"
 import { SnakeIcon, NotepadIcon, TaskManagerIcon } from "./win98-icons"
 
 interface StartMenuProps {
@@ -43,6 +43,10 @@ export const StartMenu: React.FC<StartMenuProps> = ({ startMenuRef, openWindow, 
             <SnakeIcon />
           </div>
           <span>Snake</span>
+        </div>
+        <div className="start-menu-item" onClick={() => openWindow("flappyBird")}>
+          <GameController className="start-menu-icon" size={16} />
+          <span>Flappy Bird</span>
         </div>
         <div className="start-menu-item" onClick={() => openWindow("notepad")}>
           <div className="start-menu-icon">

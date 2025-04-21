@@ -1086,3 +1086,39 @@ body {
 .cmd-input:focus {
   outline: none;
 }
+
+/* Add these styles for Flappy Bird */
+.flappy-bird-start-button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, 70px);
+  padding: 8px 16px;
+  font-size: 16px;
+  background-color: #c0c0c0;
+  border: 2px outset #c0c0c0;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.flappy-bird-start-button:hover {
+  background-color: #d3d3d3;
+}
+
+.flappy-bird-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  padding: 0;
+  background-color: #87ceeb;
+  overflow: hidden;
+}
+
+.flappy-bird-canvas {
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}

@@ -118,3 +118,16 @@ export const CmdIcon = () => (
     </text>
   </svg>
 )
+
+export const FlappyBirdIcon = () => (
+  <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <rect x="2" y="2" width="28" height="28" fill="#87CEEB" stroke="#000000" strokeWidth="1" />
+    <rect x="2" y="24" width="28" height="6" fill="#DEB887" />
+    <rect x="20" y="4" width="6" height="10" fill="#75B743" />
+    <rect x="20" y="18" width="6" height="6" fill="#75B743" />
+    <rect x="19" y="14" width="8" height="4" fill="#5D9136" />
+    <ellipse cx="10" cy="14" rx="4" ry="3" fill="#FFC107" />
+    <path d="M14 14L18 14" stroke="#FF5722" strokeWidth="2" />
+    <circle cx="8" cy="13" r="1" fill="#000000" />
+  </svg>
+)
