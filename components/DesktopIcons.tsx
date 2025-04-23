@@ -12,61 +12,78 @@ import {
   FlappyBirdIcon,
 } from "./win98-icons"
 
+// Update the interface to include the new props
 interface DesktopIconsProps {
   openWindow: (windowName: string) => void
+  iconPositions: Record<string, { x: number; y: number }>
+  startIconDragging: (e: React.MouseEvent, iconName: string) => void
 }
 
-export const DesktopIcons: React.FC<DesktopIconsProps> = ({ openWindow }) => {
+// Update the component to use the new props
+export const DesktopIcons: React.FC<DesktopIconsProps> = ({ openWindow, iconPositions, startIconDragging }) => {
+  // Define the icons with their names for positioning
+  const icons = [
+    { name: "about", title: "About Me", icon: AboutIcon },
+    { name: "projects", title: "Linux Projects", icon: LinuxIcon },
+    { name: "contact", title: "Contact", icon: ContactIcon },
+    { name: "snake", title: "Snake", icon: SnakeIcon },
+    { name: "notepad", title: "Notepad", icon: NotepadIcon },
+    { name: "musicPlayer", title: "Music Player", icon: MusicPlayerIcon },
+    { name: "cmd", title: "Command Prompt", icon: CmdIcon },
+    { name: "flappyBird", title: "Flappy Bird", icon: FlappyBirdIcon },
+  ]
+
   return (
     <div className="desktop-icons">
-      <div className="desktop-icon" onClick={() => openWindow("about")}>
-        <div className="icon-container">
-          <AboutIcon />
+      {icons.map((icon) => (
+        <div
+          key={icon.name}
+          className="desktop-icon"
+          style={{
+            position: "absolute",
+            left: iconPositions[icon.name]?.x || undefined,
+            top: iconPositions[icon.name]?.y || undefined,
+            cursor: "move",
+          }}
+          onClick={(e) => {
+            // Prevent opening the window when starting to drag
+            if (e.detail === 1) {
+              // Single click
+              const timer = setTimeout(() => {
+                openWindow(icon.name)
+              }, 200)
+
+              // Store the timer ID on the element
+              ;(e.currentTarget as any)._clickTimer = timer
+            }
+          }}
+          onDoubleClick={() => {
+            // Clear the single-click timer on double-click
+            const timer = (window.event?.currentTarget as any)?._clickTimer
+            if (timer) clearTimeout(timer)
+
+            // Open the window
+            openWindow(icon.name)
+          }}
+          onMouseDown={(e) => {
+            // Only start dragging on left mouse button
+            if (e.button === 0) {
+              e.stopPropagation()
+
+              // Clear the click timer to prevent opening the window
+              const timer = (e.currentTarget as any)._clickTimer
+              if (timer) clearTimeout(timer)
+
+              startIconDragging(e, icon.name)
+            }
+          }}
+        >
+          <div className="icon-container">
+            <icon.icon />
+          </div>
+          <span className="desktop-icon-text">{icon.title}</span>
         </div>
-        <span className="desktop-icon-text">About Me</span>
-      </div>
-      <div className="desktop-icon" onClick={() => openWindow("projects")}>
-        <div className="icon-container">
-          <LinuxIcon />
-        </div>
-        <span className="desktop-icon-text">Linux Projects</span>
-      </div>
-      <div className="desktop-icon" onClick={() => openWindow("contact")}>
-        <div className="icon-container">
-          <ContactIcon />
-        </div>
-        <span className="desktop-icon-text">Contact</span>
-      </div>
-      <div className="desktop-icon" onClick={() => openWindow("snake")}>
-        <div className="icon-container">
-          <SnakeIcon />
-        </div>
-        <span className="desktop-icon-text">Snake</span>
-      </div>
-      <div className="desktop-icon" onClick={() => openWindow("notepad")}>
-        <div className="icon-container">
-          <NotepadIcon />
-        </div>
-        <span className="desktop-icon-text">Notepad</span>
-      </div>
-      <div className="desktop-icon" onClick={() => openWindow("musicPlayer")}>
-        <div className="icon-container">
-          <MusicPlayerIcon />
-        </div>
-        <span className="desktop-icon-text">Music Player</span>
-      </div>
-      <div className="desktop-icon" onClick={() => openWindow("cmd")}>
-        <div className="icon-container">
-          <CmdIcon />
-        </div>
-        <span className="desktop-icon-text">Command Prompt</span>
-      </div>
-      <div className="desktop-icon" onClick={() => openWindow("flappyBird")}>
-        <div className="icon-container">
-          <FlappyBirdIcon />
-        </div>
-        <span className="desktop-icon-text">Flappy Bird</span>
-      </div>
+      ))}
     </div>
   )
 }

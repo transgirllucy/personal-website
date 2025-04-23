@@ -34,14 +34,37 @@ body {
   padding: 8px;
 }
 
+/* Update desktop icon styles for better auto-arrangement */
 .desktop-icon {
+  position: absolute;
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 16px;
-  width: 75px;
+  width: 80px;
+  height: 90px;
   text-align: center;
   cursor: pointer;
+  user-select: none;
+  transition: transform 0.05s ease;
+  z-index: 1;
+}
+
+.desktop-icon:active {
+  transform: scale(0.95);
+}
+
+.desktop-icons {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: calc(100% - 28px); /* Subtract taskbar height */
+  z-index: 1;
+  pointer-events: none;
+}
+
+.desktop-icons .desktop-icon {
+  pointer-events: auto;
 }
 
 .icon-container {
@@ -55,12 +78,14 @@ body {
 
 .desktop-icon-text {
   color: white;
-  text-shadow: 1px 1px 1px black;
-}
-
-.desktop-icons {
-  display: flex;
-  flex-wrap: wrap;
+  text-shadow: 1px 1px 1px black, -1px -1px 1px black, 1px -1px 1px black, -1px 1px 1px black;
+  background-color: rgba(0, 0, 0, 0.3);
+  padding: 2px 4px;
+  border-radius: 2px;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .taskbar {
@@ -428,6 +453,23 @@ body {
   background-color: #808080;
   margin: 2px 0;
   border-bottom: 1px solid white;
+}
+
+/* Add a style for the "Arrange Icons" menu item */
+.context-menu-item.arrange-icons {
+  font-weight: bold;
+}
+
+/* Add these styles for the taskbar application context menu */
+.taskbar-app-context-menu {
+  position: absolute;
+  background-color: #c0c0c0;
+  border: 2px solid #808080;
+  border-top-color: white;
+  border-left-color: white;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+  min-width: 120px;
+  z-index: 1000;
 }
 
 /* Add these styles for the calendar */

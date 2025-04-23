@@ -19,6 +19,7 @@ interface TaskbarProps {
   toggleCalendar: () => void
   handleTaskbarRightClick: (e: React.MouseEvent) => void
   highestZIndex: number
+  handleTaskbarButtonContextMenu: (e: React.MouseEvent, windowName: string) => void // Add this prop
 }
 
 export const Taskbar: React.FC<TaskbarProps> = ({
@@ -35,6 +36,7 @@ export const Taskbar: React.FC<TaskbarProps> = ({
   toggleCalendar,
   handleTaskbarRightClick,
   highestZIndex,
+  handleTaskbarButtonContextMenu,
 }) => {
   return (
     <div className="taskbar" onContextMenu={handleTaskbarRightClick}>
@@ -57,6 +59,7 @@ export const Taskbar: React.FC<TaskbarProps> = ({
               data-taskbar-button={name}
               className={`taskbar-button ${activeWindow === name && !state.isMinimized ? "active" : ""}`}
               onClick={() => (state.isMinimized ? restoreWindow(name) : minimizeWindow(name))}
+              onContextMenu={(e) => handleTaskbarButtonContextMenu(e, name)} // Add this handler
             >
               {state.title || name.charAt(0).toUpperCase() + name.slice(1)}
             </button>

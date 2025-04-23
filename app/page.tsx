@@ -315,6 +315,169 @@ export default function Home() {
   // Reference to track if component is mounted
   const isMounted = useRef(false)
 
+  // Add these new state variables inside the Home component
+  const [taskbarContextMenu, setTaskbarContextMenu] = useState<{
+    visible: boolean
+    windowName: string | null
+    position: { x: number; y: number }
+  }>({
+    visible: false,
+    windowName: null,
+    position: { x: 0, y: 0 },
+  })
+
+  const [iconPositions, setIconPositions] = useState<Record<string, { x: number; y: number }>>({})
+  const [draggingIcon, setDraggingIcon] = useState<{
+    isDragging: boolean
+    iconName: string | null
+    offset: { x: number; y: number }
+  }>({
+    isDragging: false,
+    iconName: null,
+    offset: { x: 0, y: 0 },
+  })
+
+  // Add these new functions after the existing state variables but before the useEffect hooks
+
+  // Add this function to auto-arrange icons in a grid
+  const autoArrangeIcons = useCallback(() => {
+    // Define grid parameters
+    const iconWidth = 80
+    const iconHeight = 90
+    const margin = 10
+    const startX = 20
+    const startY = 20
+    const iconsPerColumn = Math.floor((window.innerHeight - 50) / (iconHeight + margin))
+
+    // Get all icon names
+    const iconNames = ["about", "projects", "contact", "snake", "notepad", "musicPlayer", "cmd", "flappyBird"]
+
+    // Calculate positions for each icon
+    const newPositions: Record<string, { x: number; y: number }> = {}
+
+    iconNames.forEach((name, index) => {
+      const column = Math.floor(index / iconsPerColumn)
+      const row = index % iconsPerColumn
+
+      newPositions[name] = {
+        x: startX + column * (iconWidth + margin),
+        y: startY + row * (iconHeight + margin),
+      }
+    })
+
+    setIconPositions(newPositions)
+    localStorage.setItem("desktopIconPositions", JSON.stringify(newPositions))
+  }, [])
+
+  // Add this useEffect to load saved icon positions
+  // Replace the existing useEffect for loading icon positions with this:
+  useEffect(() => {
+    const savedPositions = localStorage.getItem("desktopIconPositions")
+    if (savedPositions) {
+      try {
+        setIconPositions(JSON.parse(savedPositions))
+      } catch (e) {
+        console.error("Failed to parse saved icon positions", e)
+        autoArrangeIcons() // Arrange icons if parsing fails
+      }
+    } else {
+      // No saved positions, auto-arrange icons
+      autoArrangeIcons()
+    }
+  }, [autoArrangeIcons])
+
+  // Add this useEffect to save icon positions
+  useEffect(() => {
+    if (Object.keys(iconPositions).length > 0) {
+      localStorage.setItem("desktopIconPositions", JSON.stringify(iconPositions))
+    }
+  }, [iconPositions])
+
+  // Add this useEffect to handle icon dragging
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      if (draggingIcon.isDragging && draggingIcon.iconName) {
+        setIconPositions((prev) => ({
+          ...prev,
+          [draggingIcon.iconName!]: {
+            x: e.clientX - draggingIcon.offset.x,
+            y: e.clientY - draggingIcon.offset.y,
+          },
+        }))
+      }
+    }
+
+    const handleMouseUp = () => {
+      setDraggingIcon({
+        isDragging: false,
+        iconName: null,
+        offset: { x: 0, y: 0 },
+      })
+    }
+
+    if (draggingIcon.isDragging) {
+      document.addEventListener("mousemove", handleMouseMove)
+      document.addEventListener("mouseup", handleMouseUp)
+    }
+
+    return () => {
+      document.removeEventListener("mousemove", handleMouseMove)
+      document.removeEventListener("mouseup", handleMouseUp)
+    }
+  }, [draggingIcon])
+
+  // Add this function to handle taskbar button right-click
+  const handleTaskbarButtonContextMenu = (e: React.MouseEvent, windowName: string) => {
+    e.preventDefault()
+    e.stopPropagation()
+    setTaskbarContextMenu({
+      visible: true,
+      windowName,
+      position: { x: e.clientX, y: e.clientY - 120 }, // Position above the taskbar
+    })
+  }
+
+  // Add this function to start dragging an icon
+  const startIconDragging = (e: React.MouseEvent, iconName: string) => {
+    const iconElement = e.currentTarget as HTMLElement
+    const rect = iconElement.getBoundingClientRect()
+
+    setDraggingIcon({
+      isDragging: true,
+      iconName,
+      offset: {
+        x: e.clientX - rect.left,
+        y: e.clientY - rect.top,
+      },
+    })
+  }
+
+  // Add this function to close the taskbar context menu
+  const closeTaskbarContextMenu = () => {
+    setTaskbarContextMenu({
+      visible: false,
+      windowName: null,
+      position: { x: 0, y: 0 },
+    })
+  }
+
+  // Add this useEffect to handle clicks outside the taskbar context menu
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (taskbarContextMenu.visible) {
+        const menuElement = document.querySelector(".taskbar-app-context-menu")
+        if (menuElement && !menuElement.contains(event.target as Node)) {
+          closeTaskbarContextMenu()
+        }
+      }
+    }
+
+    document.addEventListener("mousedown", handleClickOutside)
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside)
+    }
+  }, [taskbarContextMenu.visible])
+
   useEffect(() => {
     isMounted.current = true
 
@@ -980,7 +1143,8 @@ export default function Home() {
       }))
   }
 
-  // Handle desktop right-click
+  // Add this to the desktop right-click menu handler
+  // Find the handleDesktopRightClick function and replace it with this:
   const handleDesktopRightClick = (e: React.MouseEvent) => {
     e.preventDefault()
     setShowTaskbarMenu(false)
@@ -1036,9 +1200,7 @@ export default function Home() {
           backgroundPosition: "center",
         }}
       ></div>
-
-      <DesktopIcons openWindow={openWindow} />
-
+      <DesktopIcons openWindow={openWindow} iconPositions={iconPositions} startIconDragging={startIconDragging} />
       {windowStates.about.isOpen && (
         <AboutWindow
           windowState={windowStates.about}
@@ -1049,7 +1211,6 @@ export default function Home() {
           onStartDragging={(e) => startDragging(e, "about")}
         />
       )}
-
       {windowStates.projects.isOpen && (
         <ProjectsWindow
           windowState={windowStates.projects}
@@ -1060,7 +1221,6 @@ export default function Home() {
           onStartDragging={(e) => startDragging(e, "projects")}
         />
       )}
-
       {windowStates.contact.isOpen && (
         <ContactWindow
           windowState={windowStates.contact}
@@ -1071,7 +1231,6 @@ export default function Home() {
           onStartDragging={(e) => startDragging(e, "contact")}
         />
       )}
-
       {windowStates.taskManager.isOpen && (
         <TaskManagerWindow
           windowState={windowStates.taskManager}
@@ -1085,7 +1244,6 @@ export default function Home() {
           closeWindow={closeWindow}
         />
       )}
-
       {windowStates.snake.isOpen && (
         <SnakeWindow
           windowState={windowStates.snake}
@@ -1106,7 +1264,6 @@ export default function Home() {
           cellSize={cellSize}
         />
       )}
-
       {windowStates.notepad.isOpen && (
         <NotepadWindow
           windowState={windowStates.notepad}
@@ -1123,7 +1280,6 @@ export default function Home() {
           setModified={setNotepadModified}
         />
       )}
-
       {windowStates.displayProperties.isOpen && (
         <DisplayPropertiesWindow
           windowState={windowStates.displayProperties}
@@ -1143,7 +1299,6 @@ export default function Home() {
           handleFileUpload={handleFileUpload}
         />
       )}
-
       {windowStates.musicPlayer.isOpen && (
         <MusicPlayerWindow
           windowState={windowStates.musicPlayer}
@@ -1168,7 +1323,6 @@ export default function Home() {
           audioRef={audioRef}
         />
       )}
-
       {windowStates.cmd.isOpen && (
         <CmdWindow
           windowState={windowStates.cmd}
@@ -1179,7 +1333,6 @@ export default function Home() {
           onStartDragging={(e) => startDragging(e, "cmd")}
         />
       )}
-
       {showTaskbarMenu && (
         <div
           ref={taskbarMenuRef}
@@ -1197,9 +1350,12 @@ export default function Home() {
           <div className="context-menu-item" onClick={() => openWindow("taskManager")}>
             Task Manager
           </div>
+          <div className="context-menu-divider"></div>
+          <div className="context-menu-item" onClick={autoArrangeIcons}>
+            Arrange Icons
+          </div>
         </div>
       )}
-
       <Taskbar
         startMenuRef={startMenuRef}
         startButtonRef={startButtonRef}
@@ -1214,12 +1370,11 @@ export default function Home() {
         toggleCalendar={toggleCalendar}
         handleTaskbarRightClick={handleTaskbarRightClick}
         highestZIndex={highestZIndex}
+        handleTaskbarButtonContextMenu={handleTaskbarButtonContextMenu} // Add this prop
       />
-
       {isStartMenuOpen && (
         <StartMenu startMenuRef={startMenuRef} openWindow={openWindow} highestZIndex={highestZIndex} />
       )}
-
       {calendarVisible && (
         <Calendar
           calendarRef={calendarRef}
@@ -1229,7 +1384,6 @@ export default function Home() {
           zIndex={highestZIndex + 100}
         />
       )}
-
       {renderMinimizeAnimation()}
       <audio ref={audioRef} />
       {windowStates.flappyBird.isOpen && (
@@ -1242,6 +1396,55 @@ export default function Home() {
           onStartDragging={(e) => startDragging(e, "flappyBird")}
           windowStates={windowStates}
         />
+      )}
+      {taskbarContextMenu.visible && taskbarContextMenu.windowName && (
+        <div
+          className="taskbar-app-context-menu"
+          style={{
+            position: "absolute",
+            left: `${taskbarContextMenu.position.x}px`,
+            top: `${taskbarContextMenu.position.y}px`,
+            zIndex: highestZIndex + 200,
+          }}
+        >
+          <div
+            className="context-menu-item"
+            onClick={() => {
+              restoreWindow(taskbarContextMenu.windowName!)
+              closeTaskbarContextMenu()
+            }}
+          >
+            Restore
+          </div>
+          <div
+            className="context-menu-item"
+            onClick={() => {
+              minimizeWindow(taskbarContextMenu.windowName!)
+              closeTaskbarContextMenu()
+            }}
+          >
+            Minimize
+          </div>
+          <div
+            className="context-menu-item"
+            onClick={() => {
+              maximizeWindow(taskbarContextMenu.windowName!)
+              closeTaskbarContextMenu()
+            }}
+          >
+            {windowStates[taskbarContextMenu.windowName!].isMaximized ? "Restore" : "Maximize"}
+          </div>
+          <div className="context-menu-divider"></div>
+          <div
+            className="context-menu-item"
+            onClick={() => {
+              closeWindow(taskbarContextMenu.windowName!)
+              closeTaskbarContextMenu()
+            }}
+          >
+            Close
+          </div>
+        </div>
       )}
     </main>
   )
