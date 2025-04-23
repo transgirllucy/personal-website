@@ -24,6 +24,8 @@ import { DesktopIcons } from "../components/DesktopIcons"
 import { CmdWindow } from "../components/windows/CmdWindow"
 // Add this import at the top with the other window imports
 import { FlappyBirdWindow } from "../components/windows/FlappyBirdWindow"
+// Add this import at the top with the other window imports
+import { DoomWindow } from "../components/windows/DoomWindow"
 
 // Windows 98 Icons as components
 const Win98Logo = () => (
@@ -225,6 +227,16 @@ export default function Home() {
       size: { width: "350px", height: "500px" },
       zIndex: 1,
       title: "Flappy Bird",
+    },
+    // Inside the windowStates useState initialization, add:
+    doom: {
+      isOpen: false,
+      isMinimized: false,
+      isMaximized: false,
+      position: { x: 100, y: 100 },
+      size: { width: "640px", height: "480px" },
+      zIndex: 1,
+      title: "DOOM",
     },
   })
 
@@ -1445,6 +1457,17 @@ export default function Home() {
             Close
           </div>
         </div>
+      )}
+      {/* Inside the return statement, add this with the other window components: */}
+      {windowStates.doom.isOpen && (
+        <DoomWindow
+          windowState={windowStates.doom}
+          isActive={activeWindow === "doom"}
+          onClose={() => closeWindow("doom")}
+          onMinimize={() => minimizeWindow("doom")}
+          onMaximize={() => maximizeWindow("doom")}
+          onStartDragging={(e) => startDragging(e, "doom")}
+        />
       )}
     </main>
   )

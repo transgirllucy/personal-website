@@ -131,3 +131,13 @@ export const FlappyBirdIcon = () => (
     <circle cx="8" cy="13" r="1" fill="#000000" />
   </svg>
 )
+
+export const DoomIcon = () => (
+  <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <rect x="2" y="2" width="28" height="28" fill="#800000" stroke="#000000" strokeWidth="1" />
+    <path d="M16 6L26 10V22L16 26L6 22V10L16 6Z" fill="#000000" />
+    <path d="M16 8L24 11V21L16 24L8 21V11L16 8Z" fill="#FF0000" />
+    <path d="M14 12V16H18V12H14Z" fill="#000000" />
+    <path d="M12 18H20V20H12V18Z" fill="#000000" />
+  </svg>
+)

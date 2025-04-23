@@ -2,7 +2,7 @@
 
 import type React from "react"
 import { Computer, Terminal, Globe, Monitor, Music, Command, GamepadIcon as GameController } from "lucide-react"
-import { SnakeIcon, NotepadIcon, TaskManagerIcon } from "./win98-icons"
+import { SnakeIcon, NotepadIcon, TaskManagerIcon, DoomIcon } from "./win98-icons"
 
 interface StartMenuProps {
   startMenuRef: React.RefObject<HTMLDivElement>
@@ -47,6 +47,12 @@ export const StartMenu: React.FC<StartMenuProps> = ({ startMenuRef, openWindow, 
         <div className="start-menu-item" onClick={() => openWindow("flappyBird")}>
           <GameController className="start-menu-icon" size={16} />
           <span>Flappy Bird</span>
+        </div>
+        <div className="start-menu-item" onClick={() => openWindow("doom")}>
+          <div className="start-menu-icon">
+            <DoomIcon />
+          </div>
+          <span>DOOM</span>
         </div>
         <div className="start-menu-item" onClick={() => openWindow("notepad")}>
           <div className="start-menu-icon">

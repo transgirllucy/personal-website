@@ -10,6 +10,7 @@ import {
   MusicPlayerIcon,
   CmdIcon,
   FlappyBirdIcon,
+  DoomIcon,
 } from "./win98-icons"
 
 // Update the interface to include the new props
@@ -31,6 +32,7 @@ export const DesktopIcons: React.FC<DesktopIconsProps> = ({ openWindow, iconPosi
     { name: "musicPlayer", title: "Music Player", icon: MusicPlayerIcon },
     { name: "cmd", title: "Command Prompt", icon: CmdIcon },
     { name: "flappyBird", title: "Flappy Bird", icon: FlappyBirdIcon },
+    { name: "doom", title: "DOOM", icon: DoomIcon },
   ]
 
   return (
