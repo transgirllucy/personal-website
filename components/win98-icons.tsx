@@ -141,3 +141,33 @@ export const DoomIcon = () => (
     <path d="M12 18H20V20H12V18Z" fill="#000000" />
   </svg>
 )
+
+export const TetrisIcon = () => (
+  <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <rect x="2" y="2" width="28" height="28" fill="#000000" stroke="#000000" strokeWidth="1" />
+
+    {/* I piece */}
+    <rect x="6" y="6" width="4" height="4" fill="#00FFFF" stroke="#FFFFFF" strokeWidth="0.5" />
+    <rect x="10" y="6" width="4" height="4" fill="#00FFFF" stroke="#FFFFFF" strokeWidth="0.5" />
+    <rect x="14" y="6" width="4" height="4" fill="#00FFFF" stroke="#FFFFFF" strokeWidth="0.5" />
+    <rect x="18" y="6" width="4" height="4" fill="#00FFFF" stroke="#FFFFFF" strokeWidth="0.5" />
+
+    {/* L piece */}
+    <rect x="6" y="12" width="4" height="4" fill="#FFA500" stroke="#FFFFFF" strokeWidth="0.5" />
+    <rect x="6" y="16" width="4" height="4" fill="#FFA500" stroke="#FFFFFF" strokeWidth="0.5" />
+    <rect x="6" y="20" width="4" height="4" fill="#FFA500" stroke="#FFFFFF" strokeWidth="0.5" />
+    <rect x="10" y="20" width="4" height="4" fill="#FFA500" stroke="#FFFFFF" strokeWidth="0.5" />
+
+    {/* T piece */}
+    <rect x="18" y="12" width="4" height="4" fill="#800080" stroke="#FFFFFF" strokeWidth="0.5" />
+    <rect x="22" y="12" width="4" height="4" fill="#800080" stroke="#FFFFFF" strokeWidth="0.5" />
+    <rect x="26" y="12" width="4" height="4" fill="#800080" stroke="#FFFFFF" strokeWidth="0.5" />
+    <rect x="22" y="16" width="4" height="4" fill="#800080" stroke="#FFFFFF" strokeWidth="0.5" />
+
+    {/* Z piece */}
+    <rect x="18" y="20" width="4" height="4" fill="#FF0000" stroke="#FFFFFF" strokeWidth="0.5" />
+    <rect x="22" y="20" width="4" height="4" fill="#FF0000" stroke="#FFFFFF" strokeWidth="0.5" />
+    <rect x="22" y="24" width="4" height="4" fill="#FF0000" stroke="#FFFFFF" strokeWidth="0.5" />
+    <rect x="26" y="24" width="4" height="4" fill="#FF0000" stroke="#FFFFFF" strokeWidth="0.5" />
+  </svg>
+)

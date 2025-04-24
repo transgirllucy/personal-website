@@ -1426,3 +1426,216 @@ body {
 .doom-game-over button:hover {
   background-color: #d3d3d3;
 }
+
+/* Add these styles at the end of the file for the Tetris game */
+
+.tetris-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  padding: 0;
+  background-color: #000;
+  overflow: hidden;
+  position: relative;
+}
+
+.tetris-game-area {
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+
+.tetris-game-board {
+  flex: 3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+
+.tetris-sidebar {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  background-color: #222;
+  color: #fff;
+}
+
+.tetris-board {
+  border: 2px solid #555;
+  background-color: #000;
+  display: grid;
+  grid-template-rows: repeat(20, 20px);
+  grid-gap: 0;
+}
+
+.tetris-row {
+  display: flex;
+}
+
+.tetris-cell {
+  width: 20px;
+  height: 20px;
+  border: 1px solid #333;
+}
+
+.tetris-preview-cell {
+  width: 15px;
+  height: 15px;
+  border: 1px solid;
+}
+
+.tetris-next-piece {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 10px 0;
+  padding: 10px;
+  background-color: #000;
+  border: 1px solid #555;
+}
+
+.tetris-info {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.tetris-next {
+  margin-bottom: 20px;
+}
+
+.tetris-next h3 {
+  text-align: center;
+  margin-bottom: 10px;
+  color: #fff;
+}
+
+.tetris-stats {
+  margin-bottom: 20px;
+}
+
+.tetris-stats p {
+  margin: 5px 0;
+  color: #fff;
+}
+
+.tetris-controls {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.tetris-controls button {
+  width: 100%;
+  padding: 5px;
+  background-color: #c0c0c0;
+  border: 2px outset #c0c0c0;
+  cursor: pointer;
+}
+
+.tetris-controls button:hover {
+  background-color: #d3d3d3;
+}
+
+.tetris-start-screen,
+.tetris-game-over {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  color: #fff;
+  text-align: center;
+  padding: 20px;
+}
+
+.tetris-start-screen h2,
+.tetris-game-over h2 {
+  font-size: 32px;
+  margin-bottom: 20px;
+  color: #00ffff;
+  text-shadow: 2px 2px 4px #008080;
+}
+
+.tetris-start-screen p,
+.tetris-game-over p {
+  margin: 5px 0;
+  font-size: 14px;
+}
+
+.tetris-start-screen button,
+.tetris-game-over button {
+  margin-top: 20px;
+  padding: 8px 16px;
+  background-color: #c0c0c0;
+  border: 2px outset #c0c0c0;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.tetris-start-screen button:hover,
+.tetris-game-over button:hover {
+  background-color: #d3d3d3;
+}
+
+.tetris-paused {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 10;
+}
+
+.tetris-paused h2 {
+  font-size: 32px;
+  color: #fff;
+  margin-bottom: 20px;
+}
+
+.tetris-paused button {
+  padding: 8px 16px;
+  background-color: #c0c0c0;
+  border: 2px outset #c0c0c0;
+  cursor: pointer;
+}
+
+.tetris-high-scores {
+  margin-top: 20px;
+  width: 80%;
+  max-width: 300px;
+}
+
+.tetris-high-scores h3 {
+  margin-bottom: 10px;
+  color: #ffff00;
+}
+
+.tetris-high-scores table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.tetris-high-scores td {
+  padding: 3px 5px;
+  text-align: left;
+}
+
+.tetris-high-scores td:first-child {
+  width: 30px;
+}
+
+.tetris-high-scores td:last-child {
+  text-align: right;
+}

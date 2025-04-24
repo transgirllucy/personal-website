@@ -11,6 +11,7 @@ import {
   CmdIcon,
   FlappyBirdIcon,
   DoomIcon,
+  TetrisIcon,
 } from "./win98-icons"
 
 // Update the interface to include the new props
@@ -33,6 +34,7 @@ export const DesktopIcons: React.FC<DesktopIconsProps> = ({ openWindow, iconPosi
     { name: "cmd", title: "Command Prompt", icon: CmdIcon },
     { name: "flappyBird", title: "Flappy Bird", icon: FlappyBirdIcon },
     { name: "doom", title: "DOOM", icon: DoomIcon },
+    { name: "tetris", title: "Tetris", icon: TetrisIcon },
   ]
 
   return (
